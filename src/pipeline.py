@@ -22,7 +22,9 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     """
     Create derived features from raw data.
     
-    Creates volume feature and log-transformed price and carat features, and removes original dimensions and price/carat columns.
+    Creates volume feature and log-transformed price and carat features, 
+    and creates ratio features between dimensions and price/carat features.
+    Finally, removes original dimensions and price/carat columns.
     
     Args:
         df: DataFrame with columns x, y, z, price, carat.
@@ -34,6 +36,13 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     df["volume"] = df["x"] * df["y"] * df["z"]
     df["log_price"] = np.log1p(df["price"])
     df["log_carat"] = np.log1p(df["carat"])
+    
+    df["xy_ratio"] = df["x"] / df["y"]
+    df["xz_ratio"] = df["x"] / df["z"]
+    df["yz_ratio"] = df["y"] / df["z"]
+
+    df["price_per_carat"] = df["price"] / df["carat"]
+
     return df.drop(columns=["x", "y", "z", "carat", "price"])
 
 
