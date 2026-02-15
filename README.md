@@ -42,7 +42,7 @@ pip install -r requirements.txt
 Run the evaluation script from the project root so that paths like `./data/` resolve correctly:
 
 ```bash
-python src/evaluation.py
+python -m src.evaluation
 ```
 
 This will:
