@@ -37,9 +37,9 @@ def feature_engineering(df: pd.DataFrame) -> pd.DataFrame:
     df["log_price"] = np.log1p(df["price"])
     df["log_carat"] = np.log1p(df["carat"])
     
-    df["xy_ratio"] = df["x"] / df["y"]
-    df["xz_ratio"] = df["x"] / df["z"]
-    df["yz_ratio"] = df["y"] / df["z"]
+    df["xy_ratio"] = df["x"] / (df["y"] + 1e-6)
+    df["xz_ratio"] = df["x"] / (df["z"] + 1e-6)
+    df["yz_ratio"] = df["y"] / (df["z"] + 1e-6)
 
     df["price_per_carat"] = df["price"] / df["carat"]
 
