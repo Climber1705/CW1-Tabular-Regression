@@ -34,4 +34,4 @@ model.fit(X_train, Y_train)
 Y_predictions = model.predict(df_test)
 # Save the predictions to a CSV file
 output = pd.DataFrame({"yhat": Y_predictions})
-output.to_csv("CW1_submission_K23169225.csv", index=False)
+output.to_csv("./data/CW1_submission_K23169225.csv", index=False)
